@@ -12,12 +12,15 @@ class JobSite(Enum):
     GREENHOUSE = "boards.greenhouse.io/*/jobs/*"
     ASHBY = "ashbyhq.com"
     ANGELLIST = "TODO"
-    WORKABLE = "TODO"
+    WORKABLE = "apply.workable.com/*/"
     INDEED = "TODO"
     GLASSDOOR = "TODO"
     LINKEDIN = "TODO"
+    JOBVITE = "jobs.jobvite.com/*/"
+    BREEZY = "*.breezy.hr"
+    APPLYTOJOB = "*.applytojob.com"
+    BAMBOOHR = "*.bamboohr.com"
     
-
 
 class TBS(Enum):
     PAST_TWELVE_HOURS = "qdr:h12"
@@ -164,16 +167,18 @@ def handle_job_insert(supabase: any, job_urls: list[str], job_site: JobSite):
         except Exception as e:
             logging.error(f"Failed to process job: {str(e)}")
 
-
 regex = {
     JobSite.LEVER: r"https://jobs.lever.co/[^/]+/[^/]+",
     JobSite.GREENHOUSE: r"https://boards.greenhouse.io/[^/]+/jobs/[^/]+",
-    JobSite.ANGELLIST: "TODO",
-    JobSite.WORKABLE: "TODO",
+    JobSite.ASHBY: r"https://jobs.ashbyhq.com/[^/]+/[^/]+",
+    JobSite.JOBVITE: r"https://jobs.jobvite.com/[^/]+/[^/]+",
+    JobSite.WORKABLE: r"https://apply.workable.com/[^/]+/[^/]+",
+    JobSite.BREEZY: r"https://[^/]+.breezy.hr/[^/]+",
+    JobSite.APPLYTOJOB: r"https://[^/]+.applytojob.com/[^/]+",
+    JobSite.BAMBOOHR: r"https://[^/]+.bamboohr.com/[^/]+/jobs/view.php?id=[0-9]+",
     JobSite.INDEED: "TODO",
     JobSite.GLASSDOOR: "TODO",
     JobSite.LINKEDIN: "TODO",
-    JobSite.ASHBY: r"https://jobs.ashbyhq.com/[^/]+/[^/]+",
 }
 
 

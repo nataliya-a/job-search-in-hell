@@ -46,7 +46,16 @@ def mergent_task_handler():
 def perform_task(body):
     job_urls_by_board = find_jobs(
         COMPREHENSIVE_SOFTWARE_ENGINEER_QUERY,
-        [JobSite.LEVER, JobSite.GREENHOUSE, JobSite.ASHBY],
+        [
+            JobSite.LEVER, 
+            JobSite.GREENHOUSE, 
+            JobSite.ASHBY, 
+            JobSite.JOBVITE, 
+            JobSite.WORKABLE, 
+            JobSite.BREEZY, 
+            JobSite.APPLYTOJOB, 
+            JobSite.BAMBOOHR
+        ],
         TBS.PAST_TWELVE_HOURS,
         200,
     )
